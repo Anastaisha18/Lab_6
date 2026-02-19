@@ -42,10 +42,6 @@ public class Processor {
                 System.out.println("  Вызван метод: " + method.getName());
             }
         }
-
-        if (!found) {
-            System.out.println("В классе " + clazz.getSimpleName() + " нет методов с @Invoke");
-        }
     }
 
     /**
@@ -214,10 +210,11 @@ public class Processor {
      * @throws Exception если возникнет ошибка при обработке
      */
     public static void processAll(Object... objects) throws Exception {
-        System.out.println("ЗАПУСК ОБРАБОТЧИКОВ АННОТАЦИЙ");
+        System.out.println("ЛАБОРАТОРНАЯ РАБОТА №6 - АННОТАЦИИ");
+        System.out.println("ЗАПУСК ОБРАБОТЧИКОВ АННОТАЦИЙ\n");
 
         for (Object obj : objects) {
-            System.out.println("\n--- Обработка объекта: " + obj.getClass().getSimpleName() + " ---");
+            System.out.println("--- Обработка объекта: " + obj.getClass().getSimpleName() + " ---");
 
             // @Invoke
             try {
@@ -226,23 +223,26 @@ public class Processor {
                 System.err.println("Ошибка при processInvoke: " + e.getMessage());
             }
 
-            // @ToString
-            try {
-                String str = processToString(obj);
-                System.out.println("  toString: " + str);
-            } catch (Exception e) {
-                System.err.println("Ошибка при processToString: " + e.getMessage());
+            // @ToString - ТОЛЬКО для ToStringEx
+            if (obj instanceof ToStringEx) {
+                try {
+                    String str = processToString(obj);
+                    System.out.println("  toString: " + str);
+                } catch (Exception e) {
+                    System.err.println("Ошибка при processToString: " + e.getMessage());
+                }
             }
 
-            // Обработка класс-аннотаций (выводятся только если присутствуют)
+            // Обработка остальных аннотаций
             Class<?> clazz = obj.getClass();
             processDefault(clazz);
             processValidate(clazz);
             processTwo(clazz);
             processCache(clazz);
-        }
 
+            System.out.println();
+        }
         System.out.println("ОБРАБОТКА ЗАВЕРШЕНА");
     }
-
 }
+
