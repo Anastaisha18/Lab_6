@@ -48,7 +48,7 @@
 1. Создать аннотацию @Default:  
 - @Target({ElementType.TYPE, ElementType.FIELD}) - для класса и поля  
 - @Retention(RetentionPolicy.RUNTIME)  
-- Свойство: Class<?> value() - обязательное  
+- Свойство: Class<?> value() - обязательное   
 2 .Создать класс-пример:  
 - Повесить @Default(String.class) на класс  
 - Повесить @Default(Integer.class) на поле  
@@ -111,6 +111,16 @@
 Реализуйте обработчик, который выводит, какие классы указаны в аннотации.  
 
 ### Алгоритм решения
+1. Создать аннотацию @Validate:  
+- @Target({ElementType.TYPE, ElementType.ANNOTATION_TYPE})  
+- @Retention(RetentionPolicy.RUNTIME)  
+- Свойство: Class<?>[] value() - обязательное  
+2. Создать класс-пример:  
+- @Validate({String.class, Integer.class, Double.class, Boolean.class})  
+3 .Создать обработчик processValidate(Class<?> clazz):  
+- Проверить наличие аннотации  
+- Получить массив классов: getAnnotation(Validate.class).value()  
+- Перебрать массив и вывести имена: getSimpleName()  
 
 ### Тест
 
@@ -129,6 +139,16 @@
 Реализуйте обработчик, который считывает и выводит значения этих свойств.  
 
 ### Алгоритм решения
+1. Создать аннотацию @Two:  
+- @Target(ElementType.TYPE)  
+- @Retention(RetentionPolicy.RUNTIME)  
+- Свойства: String first() и int second() - оба обязательные  
+2. Создать класс-пример:  
+@Two(first = "Hello", second = 100)  
+3. Создать обработчик processTwo(Class<?> clazz):  
+- Проверить наличие аннотации  
+- Получить аннотацию: getAnnotation(Two.class)  
+- Вывести: first() и second()  
 
 ### Тест
 
@@ -148,7 +168,18 @@
 список пуст.  
 
 ### Алгоритм решения
-
+1. Создать аннотацию @Cache:  
+- @Target(ElementType.TYPE)  
+- @Retention(RetentionPolicy.RUNTIME)  
+- Свойство: String[] value() default {} - необязательное  
+2. Создать классы-примеры:  
+- @Cache({"users", "products", "orders"}) - с данными  
+- @Cache - пустой массив  
+3. Создать обработчик processCache(Class<?> clazz):  
+- Проверить наличие аннотации  
+- Получить массив: getAnnotation(Cache.class).value()  
+- Если длина 0: вывести "Список пуст"  
+- Иначе: перебрать и вывести все элементы  
 ### Тест
 
 
@@ -165,9 +196,26 @@
 • Добавить параметризованный тест (@ParameterizedTest) для проверки нескольких  
 классов с разными типами по умолчанию  
 
-### Алгоритм решения
+### Алгоритм тестирования аннотаций
+1. Проверка значения value:  
+- Получить аннотацию с класса DefaultEx  
+- Сравнить value() с String.class  
+- Получить аннотацию с поля data  
+- Сравнить value() с Integer.class  
+2. Проверка Reflection:  
+- Убедиться, что аннотация на классе ≠ null  
+- Убедиться, что аннотация на поле ≠ null  
+- Проверить, что объект аннотации instanceof Default  
+3. Параметризованный тест:  
+- Для 5 классов проверить @Default value():  
+DefaultEx → String  
+TestStringClass → String  
+TestIntegerClass → Integer  
+TestDoubleClass → Double  
+TestBooleanClass → Boolean
 
 ### Тест
+
 
 
 # Задание 2.5
@@ -181,6 +229,18 @@
 • Добавить отдельный тест для случая, когда кеш содержит несколько именованных  
 областей.  
 
-### Алгоритм решения
+### Алгоритм тестирования аннотаций
+1. Проверка считывания value:  
+- Получить аннотацию с CacheEx  
+- Проверить массив = ["users","products","orders"]  
+2. Мок-тест (Mockito):  
+- Создать мок CacheService  
+- Настроить поведение (when → thenReturn)  
+- Проверить вызовы (verify)  
+3. Проверка пустого массива:  
+- Получить аннотацию с EmptyCacheEx  
+- Проверить value().length = 0  
+4. Проверка нескольких областей:  
+Проверить наличие "users", "products", "orders" в массиве  
 
 ### Тест
