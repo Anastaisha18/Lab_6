@@ -31,7 +31,7 @@
   - invoke(obj) - вызвать метод  
 
 ### Тест
-![](screenshots/invoke.png) 
+![](screenshots/invoke.jpg) 
 
 
 # Задание 1.2
@@ -60,7 +60,7 @@
 - Вывести имена классов: getSimpleName()  
 
 ### Тест
-![](screenshots/default.png) 
+![](screenshots/default.jpg) 
 
 
 # Задание 1.3
@@ -96,7 +96,7 @@
 - Собрать строку: ClassName{field1=value1, field2=value2}  
 
 ### Тест
-![](screenshots/tostring.png) 
+![](screenshots/tostring.jpg) 
 
 
 # Задание 1.4
@@ -123,7 +123,7 @@
 - Перебрать массив и вывести имена: getSimpleName()  
 
 ### Тест
-![](screenshots/validate.png) 
+![](screenshots/validate.jpg) 
 
 
 
@@ -151,7 +151,7 @@
 - Вывести: first() и second()  
 
 ### Тест
-![](screenshots/two.png) 
+![](screenshots/two.jpg) 
 
 
 # Задание 1.6
@@ -182,8 +182,8 @@
 - Иначе: перебрать и вывести все элементы
 
 ### Тест
-![](screenshots/cache.png) 
-![](screenshots/emptycache.png) 
+![](screenshots/cache.jpg) 
+![](screenshots/emptycache.jpg) 
 
 
 # Задание 2.3
@@ -216,7 +216,7 @@ TestDoubleClass → Double
 TestBooleanClass → Boolean
 
 ### Тест
-![](screenshots/deftest.png) 
+![](screenshots/deftest.jpg) 
 
 
 # Задание 2.5
@@ -245,4 +245,4 @@ TestBooleanClass → Boolean
 Проверить наличие "users", "products", "orders" в массиве  
 
 ### Тест
-![](screenshots/cachetest.png) 
+![](screenshots/cachetest.jpg) 
