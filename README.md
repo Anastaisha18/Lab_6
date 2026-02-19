@@ -31,7 +31,7 @@
   - invoke(obj) - вызвать метод  
 
 ### Тест
-
+![](screenshots/invoke.png) 
 
 
 # Задание 1.2
@@ -60,7 +60,7 @@
 - Вывести имена классов: getSimpleName()  
 
 ### Тест
-
+![](screenshots/default.png) 
 
 
 # Задание 1.3
@@ -96,7 +96,7 @@
 - Собрать строку: ClassName{field1=value1, field2=value2}  
 
 ### Тест
-
+![](screenshots/tostring.png) 
 
 
 # Задание 1.4
@@ -123,7 +123,7 @@
 - Перебрать массив и вывести имена: getSimpleName()  
 
 ### Тест
-
+![](screenshots/validate.png) 
 
 
 
@@ -151,7 +151,7 @@
 - Вывести: first() и second()  
 
 ### Тест
-
+![](screenshots/two.png) 
 
 
 # Задание 1.6
@@ -179,10 +179,11 @@
 - Проверить наличие аннотации  
 - Получить массив: getAnnotation(Cache.class).value()  
 - Если длина 0: вывести "Список пуст"  
-- Иначе: перебрать и вывести все элементы  
+- Иначе: перебрать и вывести все элементы
+
 ### Тест
-
-
+![](screenshots/cache.png) 
+![](screenshots/emptycache.png) 
 
 
 # Задание 2.3
@@ -215,7 +216,7 @@ TestDoubleClass → Double
 TestBooleanClass → Boolean
 
 ### Тест
-
+![](screenshots/deftest.png) 
 
 
 # Задание 2.5
@@ -244,3 +245,4 @@ TestBooleanClass → Boolean
 Проверить наличие "users", "products", "orders" в массиве  
 
 ### Тест
+![](screenshots/cachetest.png) 
