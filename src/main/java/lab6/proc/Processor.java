@@ -37,10 +37,6 @@ public class Processor {
         boolean found = false;
         for (Method method : methods) {
             if (method.isAnnotationPresent(Invoke.class)) {
-                if (!found) {
-                    System.out.println("Поиск методов с @Invoke в " + clazz.getSimpleName());
-                    found = true;
-                }
                 method.setAccessible(true);
                 method.invoke(obj);
                 System.out.println("  Вызван метод: " + method.getName());
@@ -248,4 +244,5 @@ public class Processor {
 
         System.out.println("ОБРАБОТКА ЗАВЕРШЕНА");
     }
+
 }
