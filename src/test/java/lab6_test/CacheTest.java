@@ -45,6 +45,8 @@ public class CacheTest {
 
         String[] expected = {"users", "products", "orders"};
         assertArrayEquals(expected, cache.value());
+
+        System.out.println("✓ testCacheValues: массив = [users, products, orders]");
     }
 
     /**
@@ -58,6 +60,8 @@ public class CacheTest {
         Cache cache = EmptyCacheEx.class.getAnnotation(Cache.class);
         assertNotNull(cache);
         assertEquals(0, cache.value().length);
+
+        System.out.println("✓ testEmptyCache: массив пустой");
     }
 
     /**
@@ -79,6 +83,8 @@ public class CacheTest {
 
         verify(cacheService, times(1)).get(key);
         verify(cacheService, times(1)).contains(key);
+
+        System.out.println("✓ testCacheMock: мок-тест пройден");
     }
 
     /**
@@ -96,6 +102,8 @@ public class CacheTest {
         assertTrue(contains(regions, "users"));
         assertTrue(contains(regions, "products"));
         assertTrue(contains(regions, "orders"));
+
+        System.out.println("✓ testMultipleRegions: найдены users, products, orders");
     }
 
     /**
