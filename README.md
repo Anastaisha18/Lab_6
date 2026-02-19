@@ -49,7 +49,7 @@
 - @Target({ElementType.TYPE, ElementType.FIELD}) - для класса и поля  
 - @Retention(RetentionPolicy.RUNTIME)  
 - Свойство: Class<?> value() - обязательное
-2 .Создать класс-пример:  
+2. Создать класс-пример:  
 - Повесить @Default(String.class) на класс  
 - Повесить @Default(Integer.class) на поле  
 3. Создать обработчик processDefault(Class<?> clazz):  
