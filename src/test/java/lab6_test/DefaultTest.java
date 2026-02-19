@@ -121,6 +121,7 @@ public class DefaultTest {
         assertEquals(expectedClass, annotation.value(),
                 "Неверное значение для " + testClass.getSimpleName());
 
+        // ЭТОТ ВЫВОД УЖЕ ЕСТЬ:
         System.out.println("✓ Тест для " + testClass.getSimpleName() +
                 ": ожидалось " + expectedClass.getSimpleName() +
                 ", получено " + annotation.value().getSimpleName());
