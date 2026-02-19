@@ -45,19 +45,19 @@
 Напишите обработчик, который выводит имя указанного класса по умолчанию.  
 
 ### Алгоритм решения
-1. Создать аннотацию @Default:
-- @Target({ElementType.TYPE, ElementType.FIELD}) - для класса и поля
-- @Retention(RetentionPolicy.RUNTIME)
-- Свойство: Class<?> value() - обязательное
-2 .Создать класс-пример:
-- Повесить @Default(String.class) на класс
-- Повесить @Default(Integer.class) на поле
-3. Создать обработчик processDefault(Class<?> clazz):
-- Проверить аннотацию на классе: isAnnotationPresent(Default.class)
-- Получить значение: getAnnotation(Default.class).value()
-- Получить все поля: getDeclaredFields()
-- Для каждого поля проверить наличие аннотации
-- Вывести имена классов: getSimpleName()
+1. Создать аннотацию @Default:  
+- @Target({ElementType.TYPE, ElementType.FIELD}) - для класса и поля  
+- @Retention(RetentionPolicy.RUNTIME)  
+- Свойство: Class<?> value() - обязательное  
+2 .Создать класс-пример:  
+- Повесить @Default(String.class) на класс  
+- Повесить @Default(Integer.class) на поле  
+3. Создать обработчик processDefault(Class<?> clazz):  
+- Проверить аннотацию на классе: isAnnotationPresent(Default.class)  
+- Получить значение: getAnnotation(Default.class).value()  
+- Получить все поля: getDeclaredFields()  
+- Для каждого поля проверить наличие аннотации  
+- Вывести имена классов: getSimpleName()  
 
 ### Тест
 
@@ -77,6 +77,23 @@
 где @ToString имеет значение YES.  
 
 ### Алгоритм решения
+1. Создать аннотацию @ToString:  
+- @Target({ElementType.TYPE, ElementType.FIELD})  
+- @Retention(RetentionPolicy.RUNTIME)  
+- Создать enum Mode {YES, NO}  
+- Свойство: Mode value() default Mode.YES  
+2. Создать класс-пример:  
+- @ToString на классе  
+- Поле с @ToString (YES)  
+- Поле с @ToString(Mode.NO)  
+- Поле без аннотации  
+3. Создать обработчик processToString(Object obj):
+- Получить класс и его поля
+- Проверить аннотацию на классе (для полей без аннотации)
+- Для каждого поля:
+  - Если есть аннотация на поле: использовать её значение
+	- Если нет: использовать значение с класса
+- Собрать строку: ClassName{field1=value1, field2=value2}
 
 ### Тест
 
@@ -92,7 +109,6 @@
 • Имеет обязательное свойство value, типа Class[]  
 Проаннотируйте класс аннотацией @Validate, передав список типов для проверки.  
 Реализуйте обработчик, который выводит, какие классы указаны в аннотации.  
-
 
 ### Алгоритм решения
 
