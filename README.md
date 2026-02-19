@@ -19,7 +19,6 @@
 - @Target(ElementType.METHOD) - только для методов  
 - @Retention(RetentionPolicy.RUNTIME) - доступна во время выполнения  
 - Без свойств
-  
 2. Создать класс-пример с методами:  
 - Пометить несколько методов @Invoke  
 - Оставить один метод без аннотации  
@@ -49,7 +48,8 @@
 1. Создать аннотацию @Default:  
 - @Target({ElementType.TYPE, ElementType.FIELD}) - для класса и поля  
 - @Retention(RetentionPolicy.RUNTIME)  
-- Свойство: Class<?> value() - обязательное  
+- Свойство: Class<?> value() - обязательное
+
 2 .Создать класс-пример:  
 - Повесить @Default(String.class) на класс  
 - Повесить @Default(Integer.class) на поле  
