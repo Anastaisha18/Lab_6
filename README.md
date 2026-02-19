@@ -15,7 +15,20 @@
 
 
 ### Алгоритм решения
-
+Создать аннотацию @Invoke:
+@Target(ElementType.METHOD) - только для методов
+@Retention(RetentionPolicy.RUNTIME) - доступна во время выполнения
+Без свойств
+Создать класс-пример с методами:
+Пометить несколько методов @Invoke
+Оставить один метод без аннотации
+Создать обработчик processInvoke(Object obj):
+Получить класс объекта: obj.getClass()
+Получить все методы: getDeclaredMethods()
+Для каждого метода проверить: isAnnotationPresent(Invoke.class)
+Если есть аннотация:
+setAccessible(true) - для доступа к private методам
+invoke(obj) - вызвать метод
 
 ### Тест
 
