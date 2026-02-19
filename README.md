@@ -117,7 +117,7 @@
 - Свойство: Class<?>[] value() - обязательное  
 2. Создать класс-пример:  
 - @Validate({String.class, Integer.class, Double.class, Boolean.class})  
-3 .Создать обработчик processValidate(Class<?> clazz):  
+3. Создать обработчик processValidate(Class<?> clazz):  
 - Проверить наличие аннотации  
 - Получить массив классов: getAnnotation(Validate.class).value()  
 - Перебрать массив и вывести имена: getSimpleName()  
